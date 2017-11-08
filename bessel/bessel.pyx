@@ -1,7 +1,8 @@
 cimport besselc
 
 def I(int n, double x):
-    """I(n,x): Compute modified Bessel function I_n(x)"""
+    """I(n,x): Compute modified Bessel function I_n(x) (n: integer)
+    """
     return besselc.besselI(n, x)
 
 def I0e(double x):
@@ -13,15 +14,18 @@ def I1e(double x):
     return besselc.besselI1e(x)
 
 def lnInu(int nu, double x):
-    """lnInu(nu,x): Compute logarithm of modified Bessel function I_(ν+1/2)(x)"""
+    """lnInu(nu,x): Compute logarithm of modified Bessel function I_(ν+1/2)(x) (nu: integer)"""
     return besselc.bessel_lnInu(nu, x)
 
 def lnKnu(int nu, double x):
-    """lnKnu(nu,x): Compute logarithm of modified Bessel function K_(ν+1/2)(x)"""
+    """lnKnu(nu,x): Compute logarithm of modified Bessel function K_(ν+1/2)(x) (nu: integer)"""
     return besselc.bessel_lnKnu(nu, x)
 
 def lnInuKnu(int nu, double x):
-    """lnInuKnu(nu,x): Compute logarithm of modified Bessel functions I and K (see lnInu and lnKnu)"""
+    """lnInuKnu(nu,x): Compute logarithm of modified Bessel functions I and K (see lnInu and lnKnu)
+    
+    nu is an integer. The function returns the tuple (I_{ν+1/2}(x), K_{ν+1/2}(x)).
+    """
     cdef double Inu, Knu
     besselc.bessel_lnInuKnu(nu, x, &Inu, &Knu)
     return Inu, Knu
@@ -30,6 +34,6 @@ def continued_fraction(int nu, double x):
     """continued_fraction(nu,x): Compute continued fraction
 
     Compute the ratio of the modified Bessel functions of the first kind
-    I_{ν+1/2}(x)/I_{ν+3/2}(x) using a continued fraction.
+    I_{ν+1/2}(x)/I_{ν+3/2}(x) using a continued fraction. nu is an integer.
     """
     return besselc.bessel_continued_fraction(nu, x)
