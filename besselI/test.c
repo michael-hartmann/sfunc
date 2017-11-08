@@ -14,5 +14,5 @@ int main(int argc, char *argv[])
     int n = atoi(argv[1]);
     double x = atof(argv[2]);
 
-    printf("%.15g\n", bessel_I(n,x));
+    printf("%.15g\n", besselI(n,x));
 }

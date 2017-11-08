@@ -216,7 +216,7 @@ static double chbevl(double x, double array[], int n)
  * @param [in] x argument
  * @retval I0(x)
  */
-double bessel_I0(double x)
+double besselI0(double x)
 {
     if(x < 0)
         x = -x;
@@ -242,12 +242,12 @@ double bessel_I0(double x)
  * arithmetic   domain     # trials      peak         rms
  *    IEEE      0,30        30000       5.4e-16     1.2e-16
  *
- * See bessel_I0.
+ * See besselI0.
  *
  * @param [in] x argument
  * @reval exp(-|x|)*I0(x)
  */
-double bessel_I0e(double x)
+double besselI0e(double x)
 {
     if(x < 0)
         x = -x;
@@ -279,7 +279,7 @@ double bessel_I0e(double x)
  * @param [in] x argument
  * @reval I1(x)
  */
-double bessel_I1(double x)
+double besselI1(double x)
 { 
     double y, z;
 
@@ -309,12 +309,12 @@ double bessel_I1(double x)
  * arithmetic   domain     # trials      peak         rms
  *    IEEE      0, 30       30000       2.0e-15     2.0e-16
  *
- * See bessel_I1.
+ * See besselI1.
  *
  * @param [in] x argument
  * @reval exp(-|x|)*I1(x)
  */
-double bessel_I1e(double x)
+double besselI1e(double x)
 { 
     double z = fabs(x);
 
@@ -348,14 +348,14 @@ double bessel_I1e(double x)
  * @param [in] x argument
  * @retval In(x)
  */
-double bessel_I(int n, double x)
+double besselI(int n, double x)
 {
     if(n < 0)
         return NAN;
     if(n == 0)
-        return bessel_I0(x);
+        return besselI0(x);
     if(n == 1)
-        return bessel_I1(x);
+        return besselI1(x);
 
     if(x == 0)
         return 0;
@@ -381,6 +381,6 @@ double bessel_I(int n, double x)
 
     }
 
-    ans *= bessel_I0(x)/bi;
+    ans *= besselI0(x)/bi;
     return x < 0.0 && (n & 1) ? -ans : ans;
 }
